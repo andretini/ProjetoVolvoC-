@@ -5,6 +5,7 @@
 @using SistemaLocadora.Data;
 @{
     var _context = new LocadoraContext();
+    //ALTERACAO
 }
 
 <div class="text-center">
@@ -45,7 +46,7 @@
         </thead>
         <tbody>
             @if (Model != null && Model.Any())
-            {
+            {   //ALTERAÇAO {
                 foreach (VeiculoModel veiculo in _context.Veiculos)
                 {
 
@@ -86,7 +87,7 @@
                     </tr>
                     }
 
-                }
+                }//ALTERACAO}
 
             }
 

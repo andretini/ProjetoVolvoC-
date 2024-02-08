@@ -31,9 +31,9 @@ namespace SistemaLocadora.Repositorio
 
         public LocacaoModel Devolver(LocacaoModel locacao)
         {
-            System.Console.WriteLine(locacao.IdVeiculo);
             VeiculoModel veiculoDB = ListarPorIdVeic(locacao.IdVeiculo);
             veiculoDB.Estado = "Disponivel";
+            //alteracao
             locacao.DataLocacao = null;
             _locadoraContext.Veiculos.Update(veiculoDB);
             _locadoraContext.Locacaos.Update(locacao);
@@ -52,7 +52,7 @@ namespace SistemaLocadora.Repositorio
         }
         public VeiculoModel ListarPorIdVeic(int id)
         {
-
+            //alteracao{
             foreach (VeiculoModel veiculoModel in _locadoraContext.Veiculos)
             {
                 if (veiculoModel.IdVeiculo == id)
@@ -60,6 +60,7 @@ namespace SistemaLocadora.Repositorio
                     return veiculoModel;
                 }
             }
+            //alteraçao}
             return null;
 
         }
