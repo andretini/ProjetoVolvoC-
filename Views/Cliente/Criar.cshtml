@@ -1,0 +1,43 @@
+﻿@model ClienteModel
+@{
+    ViewData["Title"] = "Cadastro de Clientes";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4"> Cadastrar cliente</h1>
+
+    <form class="row g-3" asp-controller="Cliente" asp-action="CriarCliente" method="post">
+        <div class="col-md-6">
+            <label for="inputNome" class="form-label">Nome</label>
+            <input type="text" asp-for="Nome"  class="form-control" placeholder="Digite o nome">
+            @Html.ValidationMessageFor(x => x.Nome)
+        </div>
+        <div class="col-md-6">
+            <label for="inputSobrenome" class="form-label">Sobrnome</label>
+            <input type="text" asp-for="Sobrenome" class="form-control" placeholder="Digite o sobrenome">
+            @Html.ValidationMessageFor(x => x.Sobrenome)
+        </div>
+        <div class="col-12">
+            <label for="inputEndereco" class="form-label">Endereco</label>
+            <input type="text" asp-for="Endereco" class="form-control" placeholder="Digite o endereço">
+
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            <label for="inputCPF" class="form-label">CPF</label>
+            <input type="text" asp-for="Cpf" class="form-control" placeholder="Digite o CPF">
+            @Html.ValidationMessageFor(x => x.Cpf)
+        </div>
+        <div class="col-md-5">
+            <label for="inputRG" class="form-label">RG</label>
+            <input type="text" asp-for="Rg" class="form-control" placeholder="Digite o RG">
+            @Html.ValidationMessageFor(x => x.Rg)
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Adicionar Cliente</button>
+            <a class="btn btn-secondary" asp-controller="Cliente" asp-action="Index" role="button"> Voltar</a>
+        </div>
+    </form>
+</div>

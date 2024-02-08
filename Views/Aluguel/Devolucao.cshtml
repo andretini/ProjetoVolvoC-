@@ -1,0 +1,96 @@
+﻿@model List<LocacaoModel>
+@{
+    ViewData["Title"] = "Devolucao de veiculos";
+}
+@using SistemaLocadora.Data;
+@{
+    var _context = new LocadoraContext();
+}
+
+<div class="text-center">
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+    <h2 class="display-8"> Veiculos para locação</h2>
+    <br>
+    <h1 class="display-4"> Veiculos Locados</h1>
+    <br>
+    <br>
+    <table class="table" id="tabela-devolucao">
+        <thead>
+            <tr>
+                <th scope="col">Cliente</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Placa</th>
+                <th scope="col">Ano</th>
+                <th scope="col">Data de Locação</th>
+                <th scope="col">Preço Diaria</th>
+                <th scope="col">Dias Locado</th>
+                <th scope="col">Valor Locação</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (VeiculoModel veiculo in _context.Veiculos)
+                {
+
+                    ClienteModel cliente = null;
+                    LocacaoModel locacao = null;
+
+                    foreach (LocacaoModel loc in _context.Locacaos){
+                        if (loc.IdVeiculo == veiculo.IdVeiculo && loc.DataLocacao != null)
+                        {
+                            locacao = loc;
+                            foreach (ClienteModel cli in _context.Clientes)
+                            {
+                                if (cli.IdCliente == locacao.FkClienteIdCliente)
+                                {
+                                    cliente = cli;
+                                }
+                            }
+                        }
+                    }
+
+                    if (cliente != null){
+                        <tr>
+                        <td>@cliente.Nome</td>
+                        <td>@veiculo.Modelo</td>
+                        <td>@veiculo.Marca</td>
+                        <td>@veiculo.Placa</td>
+                        <td>@veiculo.Ano</td>
+                        <td>@locacao.DataLocacao</td>
+                        <td>@locacao.Dias</td>
+                        <td>@locacao.Valor</td>
+                        <td>
+                            <form asp-controller="Aluguel" asp-action="Devolver" method="post">
+                                <input type="hidden" role="button" class="btn btn-warning" value="@locacao.IdLocacao"
+                                    name="IdLocacao">
+                                <button type="submit" class="btn btn-primary">Devolver Veiculo</button>
+                            </form>
+                        </td>
+                    </tr>
+                    }
+
+                }
+
+            }
+
+
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,53 @@
+﻿@model VeiculoModel
+@{
+    ViewData["Title"] = "Venda de Veiculos";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4"> Vender Veiculo</h1>
+
+    <form class="row g-3" asp-controller="Veiculo" asp-action="VenderVeiculo" method="post">
+        <input type="hidden" asp-for="IdVeiculo">
+        <div class="col-md-4">
+            <label for="inputModelo" class="form-label">Modelo</label>
+            <input type="text" asp-for="Modelo" class="form-control">
+        </div>
+        <div class="col-md-4">
+            <label for="inputFabricante" class="form-label">Marca</label>
+            <input type="text" asp-for="Marca" class="form-control">
+        </div>
+        <div class="col-4">
+            <label for="inputPlaca" class="form-label">Placa</label>
+            <input type="text" asp-for="Placa" class="form-control">
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            <label for="inputValor" class="form-label">Valor De Compra</label>
+            <input type="text" asp-for="ValorDeCompra" class="form-control">
+        </div>
+
+        <div class="col-md-5">
+            <label for="inputAno" class="form-label">Ano</label>
+            <input type="text" asp-for="Ano" class="form-control">
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            <label for="inputTipo" class="form-label">Tipo</label>
+            <input type="text" asp-for="Tipo" class="form-control">
+        </div>
+
+        <div class="col-md-5">
+            <label for="inputCategoria" class="form-label">Categoria</label>
+            <input type="text" asp-for="Categoria" class="form-control">
+        </div>
+        <div class="col-md-1"></div>
+        
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Confirmar Venda</button>
+            <a class="btn btn-secondary" asp-controller="Veiculo" asp-action="Index" role="button">Voltar</a>
+        </div>
+    </form>
+
+</div>

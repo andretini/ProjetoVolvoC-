@@ -1,0 +1,60 @@
+﻿@model VeiculoModel
+@{
+    ViewData["Title"] = "Cadastro de Veiculos";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4"> Cadastrar novo Veiculo</h1>
+
+    <form class="row g-3" asp-controller="Veiculo" asp-action="CadastrarVeiculo" method="post">
+        <div class="col-md-4">
+            <label for="inputModelo" class="form-label">Modelo</label>
+            <input type="text" asp-for="Modelo" class="form-control" >
+            @Html.ValidationMessageFor(x => x.Modelo)
+        </div>
+        <div class="col-md-4">
+            <label for="inputFabricante" class="form-label">Marca</label>
+            <input type="text" asp-for="Marca" class="form-control" >
+            @Html.ValidationMessageFor(x => x.Marca)
+        </div>
+        <div class="col-4">
+            <label for="inputPlaca" class="form-label">Placa</label>
+            <input type="text" asp-for="Placa" class="form-control" >
+            @Html.ValidationMessageFor(x => x.Placa)
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            <label for="inputValor" class="form-label">Valor De Compra</label>
+            <input type="number" asp-for="ValorDeCompra" class="form-control" >
+            @Html.ValidationMessageFor(x => x.ValorDeCompra)
+        </div>
+
+        <div class="col-md-5">
+            <label for="inputAno" class="form-label">Ano</label>
+            <input type="number" asp-for="Ano" class="form-control" >
+            @Html.ValidationMessageFor(x => x.Ano)
+        </div>
+        <div class="col-md-1"></div>
+
+        <select class="form-select col-md-12" asp-for="Tipo" aria-label="Default select example">
+            <option selected>Selecione o Tipo do Veiculo</option>
+            <option value="Moto">Moto</option>
+            <option value="Automovel">Automovel</option>
+            <option value="Van">Van</option>
+        </select>
+        @Html.ValidationMessageFor(x => x.Tipo)
+        <select class="form-select col-md-12" asp-for="Categoria" aria-label="Default select example">
+            <option selected>Selecione a Categoria do Veiculo</option>
+            <option value="Popular">Popular</option>
+            <option value="Intermediario">Intermediario</option>
+            <option value="Luxo">Luxo</option>
+        </select>
+        @Html.ValidationMessageFor(x => x.Categoria)
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Adicionar Veiculo</button>
+            <a class="btn btn-secondary" asp-controller="Veiculo" asp-action="Index" role="button"> Voltar</a>
+        </div>
+    </form>
+    
+</div>

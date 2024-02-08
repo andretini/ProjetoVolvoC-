@@ -1,0 +1,62 @@
+﻿@model List<VeiculoModel>
+@{
+    ViewData["Title"] = "Listagem de Veiculos";
+}
+
+<div class="text-center">
+
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+    <h1 class="display-4"> Veiculos Cadastrados</h1>
+
+    <div class="d-grid gap-4 justify-content-start">
+        <a class="btn btn-primary" asp-controller="Veiculo" asp-action="Cadastrar" role="button">Cadastrar novo Veiculo</a>
+    </div>
+    <br> 
+
+    <table class="table" id="tabela-veiculo">
+      <thead>
+        <tr>
+          <th scope="col">Modelo</th>
+          <th scope="col">Marca</th>
+          <th scope="col">Ano</th>
+          <th scope="col">Placa</th>
+          <th scope="col">Categoria</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Estado</th>
+
+        </tr>
+      </thead>
+      <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (VeiculoModel veiculo in Model)
+                {
+                    <tr>
+                        <td>@veiculo.Modelo</td>
+                        <td>@veiculo.Marca</td>
+                        <td>@veiculo.Ano</td>
+                        <td>@veiculo.Placa</td>
+                        <td>@veiculo.Categoria</td>
+                        <td>@veiculo.Tipo</td>
+                        <td>@veiculo.Estado</td>                        
+                    </tr>
+                }
+            }
+       
+      </tbody>
+    </table>
+</div>

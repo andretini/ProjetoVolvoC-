@@ -1,0 +1,60 @@
+﻿@model LocacaoModel
+@{
+    ViewData["Title"] = "Aluguel de Veiculos";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4"> Cadastrar novo Veiculo</h1>
+
+    <form class="row g-3" asp-controller="Aluguel" asp-action="AlugarVeiculo" method="post">
+        <input type="hidden" asp-for="IdVeiculo">
+        <div class="col-md-4">
+            <label for="inputModelo" class="form-label">Modelo</label>
+            <input type="text" asp-for="@Model.Veiculo.Modelo" class="form-control">
+        </div>
+        <div class="col-md-4">
+            <label for="inputFabricante" class="form-label">Marca</label>
+            <input type="text" asp-for="@Model.Veiculo.Marca" class="form-control">
+        </div>
+        <div class="col-4">
+            <label for="inputPlaca" class="form-label">Placa</label>
+            <input type="text" asp-for="@Model.Veiculo.Placa" class="form-control">
+        </div>             
+
+        <div class="col-md-4">
+            <label for="inputAno" class="form-label">Ano</label>
+            <input type="text" asp-for="@Model.Veiculo.Ano" class="form-control">
+        </div>       
+        <div class="col-md-4">
+            <label for="inputTipo" class="form-label">Tipo</label>
+            <input type="text" asp-for="@Model.Veiculo.Tipo" class="form-control">
+        </div>
+
+        <div class="col-md-4">
+            <label for="inputCategoria" class="form-label">Categoria</label>
+            <input type="text" asp-for="@Model.Veiculo.Categoria" class="form-control">
+        </div>
+        <div class="col-md-4">
+            <label for="inputValorDiaria" class="form-label">Valor da Diaria</label>
+            <input type="number" asp-for="@Model.Veiculo.ValorDiaria" class="form-control">
+        </div>
+        <div class="col-md-4">
+            <label for="inputValorDiaria" class="form-label">Dias</label>
+            <input type="number" asp-for="@Model.Dias" class="form-control">
+        </div>
+        <div class="col-md-4">
+            <label for="inputData" class="form-label">Data Locação</label>
+            <input type="date" asp-for="@Model.DataLocacao" class="form-control">
+        </div>
+        <select class="form-select col-12" asp-for="@Model.Cliente" asp-items="@(new SelectList(ViewBag.listofitens, "Nome"))" aria-label="Default select example">
+            <option selected>Selecione o Cliente</option>          
+        </select>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Confirmar Locação</button>
+            <a class="btn btn-secondary" asp-controller="Aluguel" asp-action="Index" role="button">Voltar</a>
+        </div>
+    </form>
+
+</div>
