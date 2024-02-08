@@ -16,6 +16,8 @@ Este projeto foi feito por
   Correçao de bugs no salvamento dos dados em Devoluçao- André
 
   Nota: O SQL server não funcionou na maquina do Geovanni porem o backend foi feito inteiramente por ele, em relação ao backend o André apenas corrigiu os Bugs.
+
+  Este foi feito Code First então não foi necessario o codigo sql para criação da DB
   
   
 
